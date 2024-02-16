@@ -49,8 +49,28 @@
   .percentage {
     font-size: 18px;
     font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+  }
+  .bar {
+    width: 100%;
+    background-color: #888;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .fill {
+    height: 100%;
+    background-color: #e74c3c;
+    border-radius: 5px;
+  }
+  /* Prevent link color change */
+  a {
+    color: inherit;
+    text-decoration: none;
     color: #e74c3c;
   }
+
 </style>
 </head>
 <body>
@@ -64,231 +84,269 @@
   const data = [
   {
     "provinceName": "ACEH",
-    "totalTemuan": 40,
-    "progress": 8054,
-    "percent": "0.50%"
+    "totalTemuan": 27,
+    "progress": 8698,
+    "percent": "0.31%",
+    "linkKpu": "https://t.co/lJqo44FB8e"
   },
   {
     "provinceName": "BALI",
-    "totalTemuan": 14,
-    "progress": 6093,
-    "percent": "0.23%"
+    "totalTemuan": 16,
+    "progress": 6373,
+    "percent": "0.25%",
+    "linkKpu": "https://t.co/GY4H2Gwfnr"
   },
   {
     "provinceName": "BANTEN",
-    "totalTemuan": 50,
-    "progress": 19158,
-    "percent": "0.26%"
+    "totalTemuan": 55,
+    "progress": 19760,
+    "percent": "0.28%",
+    "linkKpu": "https://t.co/DKM6EA8zW2"
   },
   {
     "provinceName": "BENGKULU",
-    "totalTemuan": 20,
-    "progress": 3081,
-    "percent": "0.65%"
+    "totalTemuan": 26,
+    "progress": 3542,
+    "percent": "0.73%",
+    "linkKpu": ""
   },
   {
     "provinceName": "DAERAH ISTIMEWA YOGYAKARTA",
     "totalTemuan": 10,
-    "progress": 6984,
-    "percent": "0.14%"
+    "progress": 7650,
+    "percent": "0.13%",
+    "linkKpu": "https://t.co/1kMwx0K94A"
   },
   {
     "provinceName": "DKI JAKARTA",
     "totalTemuan": 92,
-    "progress": 18190,
-    "percent": "0.51%"
+    "progress": 18681,
+    "percent": "0.49%",
+    "linkKpu": "https://docs.google.com/spreadsheets/d/1dca5fJmGz8Fo2pxzkviwykqMeb8_RZ6CAJ3NQgTgePw/edit?usp=sharing"
   },
   {
     "provinceName": "GORONTALO",
     "totalTemuan": 7,
-    "progress": 1677,
-    "percent": "0.42%"
+    "progress": 1922,
+    "percent": "0.36%",
+    "linkKpu": ""
   },
   {
     "provinceName": "JAMBI",
     "totalTemuan": 14,
-    "progress": 5628,
-    "percent": "0.25%"
+    "progress": 6373,
+    "percent": "0.22%",
+    "linkKpu": "https://t.co/LvQQJTRIec"
   },
   {
     "provinceName": "JAWA BARAT",
     "totalTemuan": 367,
-    "progress": 74472,
-    "percent": "0.49%"
+    "progress": 77959,
+    "percent": "0.47%",
+    "linkKpu": "https://t.co/PP0fTTaFOv"
   },
   {
     "provinceName": "JAWA TENGAH",
     "totalTemuan": 241,
-    "progress": 79680,
-    "percent": "0.30%"
+    "progress": 83904,
+    "percent": "0.29%",
+    "linkKpu": "https://t.co/qXn6HK75Hy"
   },
   {
     "provinceName": "JAWA TIMUR",
     "totalTemuan": 264,
-    "progress": 64711,
-    "percent": "0.41%"
+    "progress": 68958,
+    "percent": "0.38%",
+    "linkKpu": "https://t.co/sCjVwWGE7A"
   },
   {
     "provinceName": "KALIMANTAN BARAT",
     "totalTemuan": 14,
-    "progress": 8001,
-    "percent": "0.17%"
+    "progress": 9409,
+    "percent": "0.15%",
+    "linkKpu": "https://t.co/YPRpy1pFkh"
   },
   {
     "provinceName": "KALIMANTAN SELATAN",
     "totalTemuan": 14,
-    "progress": 5964,
-    "percent": "0.23%"
+    "progress": 6520,
+    "percent": "0.21%",
+    "linkKpu": "https://t.co/raBNZeEw2S"
   },
   {
     "provinceName": "KALIMANTAN TENGAH",
     "totalTemuan": 13,
-    "progress": 3163,
-    "percent": "0.41%"
+    "progress": 3613,
+    "percent": "0.36%",
+    "linkKpu": "https://t.co/zoZykpTpfu"
   },
   {
     "provinceName": "KALIMANTAN TIMUR",
     "totalTemuan": 11,
-    "progress": 5215,
-    "percent": "0.21%"
+    "progress": 5648,
+    "percent": "0.19%",
+    "linkKpu": "https://t.co/l4Mxz066c8"
   },
   {
     "provinceName": "KALIMANTAN UTARA",
     "totalTemuan": 8,
-    "progress": 774,
-    "percent": "1.03%"
+    "progress": 955,
+    "percent": "0.84%",
+    "linkKpu": ""
   },
   {
     "provinceName": "KEPULAUAN BANGKA BELITUNG",
     "totalTemuan": 8,
-    "progress": 2396,
-    "percent": "0.33%"
+    "progress": 2604,
+    "percent": "0.31%",
+    "linkKpu": ""
   },
   {
     "provinceName": "KEPULAUAN RIAU",
     "totalTemuan": 8,
-    "progress": 2419,
-    "percent": "0.33%"
+    "progress": 2610,
+    "percent": "0.31%",
+    "linkKpu": ""
   },
   {
     "provinceName": "LAMPUNG",
     "totalTemuan": 80,
-    "progress": 15349,
-    "percent": "0.52%"
+    "progress": 16845,
+    "percent": "0.47%",
+    "linkKpu": "https://t.co/CzhDllt9de"
   },
   {
     "provinceName": "Luar Negeri",
     "totalTemuan": 108,
-    "progress": 1202,
-    "percent": "8.99%"
+    "progress": 1237,
+    "percent": "8.73%",
+    "linkKpu": ""
   },
   {
     "provinceName": "MALUKU",
     "totalTemuan": 19,
-    "progress": 2206,
-    "percent": "0.86%"
+    "progress": 2257,
+    "percent": "0.84%",
+    "linkKpu": ""
   },
   {
     "provinceName": "MALUKU UTARA",
     "totalTemuan": 7,
-    "progress": 1172,
-    "percent": "0.60%"
+    "progress": 1251,
+    "percent": "0.56%",
+    "linkKpu": ""
   },
   {
     "provinceName": "NUSA TENGGARA BARAT",
     "totalTemuan": 21,
-    "progress": 8624,
-    "percent": "0.24%"
+    "progress": 10006,
+    "percent": "0.21%",
+    "linkKpu": ""
   },
   {
     "provinceName": "NUSA TENGGARA TIMUR",
     "totalTemuan": 39,
-    "progress": 7564,
-    "percent": "0.52%"
+    "progress": 8581,
+    "percent": "0.45%",
+    "linkKpu": ""
   },
   {
     "provinceName": "P A P U A",
     "totalTemuan": 8,
-    "progress": 700,
-    "percent": "1.14%"
+    "progress": 711,
+    "percent": "1.13%",
+    "linkKpu": "https://t.co/Uv2FX9DSpl"
   },
   {
     "provinceName": "PAPUA BARAT",
     "totalTemuan": 1,
-    "progress": 364,
-    "percent": "0.27%"
+    "progress": 376,
+    "percent": "0.27%",
+    "linkKpu": ""
   },
   {
     "provinceName": "PAPUA BARAT DAYA",
     "totalTemuan": 3,
-    "progress": 606,
-    "percent": "0.50%"
+    "progress": 624,
+    "percent": "0.48%",
+    "linkKpu": ""
   },
   {
     "provinceName": "PAPUA SELATAN",
     "totalTemuan": 1,
-    "progress": 242,
-    "percent": "0.41%"
+    "progress": 249,
+    "percent": "0.40%",
+    "linkKpu": ""
   },
   {
     "provinceName": "PAPUA TENGAH",
     "totalTemuan": 4,
-    "progress": 136,
-    "percent": "2.94%"
+    "progress": 145,
+    "percent": "2.76%",
+    "linkKpu": ""
   },
   {
     "provinceName": "RIAU",
     "totalTemuan": 16,
-    "progress": 7375,
-    "percent": "0.22%"
+    "progress": 8338,
+    "percent": "0.19%",
+    "linkKpu": ""
   },
   {
     "provinceName": "SULAWESI BARAT",
     "totalTemuan": 6,
-    "progress": 1989,
-    "percent": "0.30%"
+    "progress": 2298,
+    "percent": "0.26%",
+    "linkKpu": "https://t.co/xCvFh2gHjD"
   },
   {
     "provinceName": "SULAWESI SELATAN",
     "totalTemuan": 53,
-    "progress": 14129,
-    "percent": "0.38%"
+    "progress": 15181,
+    "percent": "0.35%",
+    "linkKpu": "https://t.co/HoKAbgQFqL"
   },
   {
     "provinceName": "SULAWESI TENGAH",
     "totalTemuan": 21,
-    "progress": 3073,
-    "percent": "0.68%"
+    "progress": 4123,
+    "percent": "0.51%",
+    "linkKpu": "https://t.co/WrOVK9sfRo"
   },
   {
     "provinceName": "SULAWESI TENGGARA",
     "totalTemuan": 9,
-    "progress": 3719,
-    "percent": "0.24%"
+    "progress": 4237,
+    "percent": "0.21%",
+    "linkKpu": "https://t.co/sywAFxVcyW"
   },
   {
     "provinceName": "SULAWESI UTARA",
     "totalTemuan": 46,
-    "progress": 5260,
-    "percent": "0.87%"
+    "progress": 5562,
+    "percent": "0.83%",
+    "linkKpu": "https://t.co/85Die1SS7V"
   },
   {
     "provinceName": "SUMATERA BARAT",
     "totalTemuan": 11,
-    "progress": 8918,
-    "percent": "0.12%"
+    "progress": 9687,
+    "percent": "0.11%",
+    "linkKpu": "https://t.co/WjHec8mER0"
   },
   {
     "provinceName": "SUMATERA SELATAN",
     "totalTemuan": 42,
-    "progress": 13420,
-    "percent": "0.31%"
+    "progress": 15004,
+    "percent": "0.28%",
+    "linkKpu": ""
   },
   {
     "provinceName": "SUMATERA UTARA",
     "totalTemuan": 69,
-    "progress": 20602,
-    "percent": "0.33%"
+    "progress": 21914,
+    "percent": "0.31%",
+    "linkKpu": "https://t.co/zByD1FXOrZ"
   }
 ]
 
@@ -300,7 +358,9 @@
       <div class="province-name">${province.provinceName}</div>
       <div class="detail">Total Temuan: ${province.totalTemuan}</div>
       <div class="detail">Progress: ${province.progress}</div>
+      <div class="bar"><div class="fill" style="width: ${province.percent};"></div></div>
       <div class="percentage">Persentase Kesalahan: ${province.percent}</div>
+      <a href="${province.linkKpu}" target="_blank">Lihat Daftar TPS</a>
     `;
     return provinceElement;
   }
