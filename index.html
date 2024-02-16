@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persentase Kesalahan Input Data KPU</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  .province {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  .province:hover {
+    transform: translateY(-5px);
+  }
+  .province-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .detail {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .percentage {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Persentase Kesalahan Input Data KPU</h1>
+  <div id="provinceList"></div>
+</div>
+
+<script>
+  // Data to display
+  const data = [
+  {
+    "provinceName": "ACEH",
+    "totalTemuan": 40,
+    "progress": 8054,
+    "percent": "0.50%"
+  },
+  {
+    "provinceName": "BALI",
+    "totalTemuan": 14,
+    "progress": 6093,
+    "percent": "0.23%"
+  },
+  {
+    "provinceName": "BANTEN",
+    "totalTemuan": 50,
+    "progress": 19158,
+    "percent": "0.26%"
+  },
+  {
+    "provinceName": "BENGKULU",
+    "totalTemuan": 20,
+    "progress": 3081,
+    "percent": "0.65%"
+  },
+  {
+    "provinceName": "DAERAH ISTIMEWA YOGYAKARTA",
+    "totalTemuan": 10,
+    "progress": 6984,
+    "percent": "0.14%"
+  },
+  {
+    "provinceName": "DKI JAKARTA",
+    "totalTemuan": 92,
+    "progress": 18190,
+    "percent": "0.51%"
+  },
+  {
+    "provinceName": "GORONTALO",
+    "totalTemuan": 7,
+    "progress": 1677,
+    "percent": "0.42%"
+  },
+  {
+    "provinceName": "JAMBI",
+    "totalTemuan": 14,
+    "progress": 5628,
+    "percent": "0.25%"
+  },
+  {
+    "provinceName": "JAWA BARAT",
+    "totalTemuan": 367,
+    "progress": 74472,
+    "percent": "0.49%"
+  },
+  {
+    "provinceName": "JAWA TENGAH",
+    "totalTemuan": 241,
+    "progress": 79680,
+    "percent": "0.30%"
+  },
+  {
+    "provinceName": "JAWA TIMUR",
+    "totalTemuan": 264,
+    "progress": 64711,
+    "percent": "0.41%"
+  },
+  {
+    "provinceName": "KALIMANTAN BARAT",
+    "totalTemuan": 14,
+    "progress": 8001,
+    "percent": "0.17%"
+  },
+  {
+    "provinceName": "KALIMANTAN SELATAN",
+    "totalTemuan": 14,
+    "progress": 5964,
+    "percent": "0.23%"
+  },
+  {
+    "provinceName": "KALIMANTAN TENGAH",
+    "totalTemuan": 13,
+    "progress": 3163,
+    "percent": "0.41%"
+  },
+  {
+    "provinceName": "KALIMANTAN TIMUR",
+    "totalTemuan": 11,
+    "progress": 5215,
+    "percent": "0.21%"
+  },
+  {
+    "provinceName": "KALIMANTAN UTARA",
+    "totalTemuan": 8,
+    "progress": 774,
+    "percent": "1.03%"
+  },
+  {
+    "provinceName": "KEPULAUAN BANGKA BELITUNG",
+    "totalTemuan": 8,
+    "progress": 2396,
+    "percent": "0.33%"
+  },
+  {
+    "provinceName": "KEPULAUAN RIAU",
+    "totalTemuan": 8,
+    "progress": 2419,
+    "percent": "0.33%"
+  },
+  {
+    "provinceName": "LAMPUNG",
+    "totalTemuan": 80,
+    "progress": 15349,
+    "percent": "0.52%"
+  },
+  {
+    "provinceName": "Luar Negeri",
+    "totalTemuan": 108,
+    "progress": 1202,
+    "percent": "8.99%"
+  },
+  {
+    "provinceName": "MALUKU",
+    "totalTemuan": 19,
+    "progress": 2206,
+    "percent": "0.86%"
+  },
+  {
+    "provinceName": "MALUKU UTARA",
+    "totalTemuan": 7,
+    "progress": 1172,
+    "percent": "0.60%"
+  },
+  {
+    "provinceName": "NUSA TENGGARA BARAT",
+    "totalTemuan": 21,
+    "progress": 8624,
+    "percent": "0.24%"
+  },
+  {
+    "provinceName": "NUSA TENGGARA TIMUR",
+    "totalTemuan": 39,
+    "progress": 7564,
+    "percent": "0.52%"
+  },
+  {
+    "provinceName": "P A P U A",
+    "totalTemuan": 8,
+    "progress": 700,
+    "percent": "1.14%"
+  },
+  {
+    "provinceName": "PAPUA BARAT",
+    "totalTemuan": 1,
+    "progress": 364,
+    "percent": "0.27%"
+  },
+  {
+    "provinceName": "PAPUA BARAT DAYA",
+    "totalTemuan": 3,
+    "progress": 606,
+    "percent": "0.50%"
+  },
+  {
+    "provinceName": "PAPUA SELATAN",
+    "totalTemuan": 1,
+    "progress": 242,
+    "percent": "0.41%"
+  },
+  {
+    "provinceName": "PAPUA TENGAH",
+    "totalTemuan": 4,
+    "progress": 136,
+    "percent": "2.94%"
+  },
+  {
+    "provinceName": "RIAU",
+    "totalTemuan": 16,
+    "progress": 7375,
+    "percent": "0.22%"
+  },
+  {
+    "provinceName": "SULAWESI BARAT",
+    "totalTemuan": 6,
+    "progress": 1989,
+    "percent": "0.30%"
+  },
+  {
+    "provinceName": "SULAWESI SELATAN",
+    "totalTemuan": 53,
+    "progress": 14129,
+    "percent": "0.38%"
+  },
+  {
+    "provinceName": "SULAWESI TENGAH",
+    "totalTemuan": 21,
+    "progress": 3073,
+    "percent": "0.68%"
+  },
+  {
+    "provinceName": "SULAWESI TENGGARA",
+    "totalTemuan": 9,
+    "progress": 3719,
+    "percent": "0.24%"
+  },
+  {
+    "provinceName": "SULAWESI UTARA",
+    "totalTemuan": 46,
+    "progress": 5260,
+    "percent": "0.87%"
+  },
+  {
+    "provinceName": "SUMATERA BARAT",
+    "totalTemuan": 11,
+    "progress": 8918,
+    "percent": "0.12%"
+  },
+  {
+    "provinceName": "SUMATERA SELATAN",
+    "totalTemuan": 42,
+    "progress": 13420,
+    "percent": "0.31%"
+  },
+  {
+    "provinceName": "SUMATERA UTARA",
+    "totalTemuan": 69,
+    "progress": 20602,
+    "percent": "0.33%"
+  }
+]
+
+  // Function to create province elements
+  function createProvinceElement(province) {
+    const provinceElement = document.createElement('div');
+    provinceElement.classList.add('province');
+    provinceElement.innerHTML = `
+      <div class="province-name">${province.provinceName}</div>
+      <div class="detail">Total Temuan: ${province.totalTemuan}</div>
+      <div class="detail">Progress: ${province.progress}</div>
+      <div class="percentage">Persentase Kesalahan: ${province.percent}</div>
+    `;
+    return provinceElement;
+  }
+
+  // Function to render province list
+  function renderProvinceList(data) {
+    const provinceList = document.getElementById('provinceList');
+    data.forEach(province => {
+      const provinceElement = createProvinceElement(province);
+      provinceList.appendChild(provinceElement);
+    });
+  }
+
+  // Render the province list when the page loads
+  window.onload = function() {
+    renderProvinceList(data);
+  };
+</script>
+</body>
+</html>
