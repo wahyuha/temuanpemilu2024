@@ -81,7 +81,7 @@
 
 <script>
   // Data to display
-  const data = [
+  let data = [
   {
     "provinceName": "ACEH",
     "totalTemuan": 44,
@@ -216,13 +216,6 @@
     "linkKpu": "https://t.co/CzhDllt9de"
   },
   {
-    "provinceName": "Luar Negeri",
-    "totalTemuan": 230,
-    "progress": 1495,
-    "percent": "15.38%",
-    "linkKpu": ""
-  },
-  {
     "provinceName": "MALUKU",
     "totalTemuan": 24,
     "progress": 2611,
@@ -349,6 +342,14 @@
     "linkKpu": "https://t.co/zByD1FXOrZ"
   }
 ]
+
+  function compareTotalTemuan(a, b) {
+    return b.totalTemuan - a.totalTemuan;
+  }
+
+// Sort the array using the custom sorting function
+  data = data.sort(compareTotalTemuan);
+
 
   // Function to create province elements
   function createProvinceElement(province) {
