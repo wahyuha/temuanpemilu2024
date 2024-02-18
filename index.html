@@ -356,8 +356,8 @@
     provinceElement.classList.add('province');
     provinceElement.innerHTML = `
       <div class="province-name">${province.provinceName}</div>
-      <div class="detail">Total Temuan: ${province.totalTemuan}</div>
-      <div class="detail">Progress: ${province.progress}</div>
+      <div class="detail">Jumlah Temuan Kesalahan pada TPS : ${province.totalTemuan}</div>
+      <div class="detail">Progress TPS: ${province.progress}</div>
       <div class="bar"><div class="fill" style="width: ${province.percent};"></div></div>
       <div class="percentage">Persentase Kesalahan: ${province.percent}</div>
       <a href="${province.linkKpu}" target="_blank">Lihat Daftar TPS</a>
