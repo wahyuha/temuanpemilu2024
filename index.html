@@ -77,6 +77,7 @@
 <div class="container">
   <h1>Persentase Kesalahan Input Data KPU</h1>
   <p style="color: #888;">Data terakhir update: 11:49 Senin, 12 Februari 2024</p>
+  <div style="margin: 16px 0;">Data yang masih salah: <span id="total-wrong" style="padding: 8px; font-size: 30px;">0 TPS</span></div>
   <div id="provinceList"></div>
 </div>
 
@@ -340,7 +341,7 @@
     "totalTemuan": 83,
     "progress": 19018,
     "percent": "0.44%",
-    "linkKpu": ""
+    "linkKpu": "https://docs.google.com/spreadsheets/d/1qb71YnnkeuAqKIK64Pu8gjlbAYVh2x_m3sgXUFTKYn0/edit?usp=sharing"
   },
   {
     "provinceName": "SUMATERA UTARA",
@@ -357,6 +358,9 @@
 
 // Sort the array using the custom sorting function
   data = data.sort(compareTotalTemuan);
+
+  // Calculate the total
+  const totalErrorNumber = data.reduce((total, item) => total + item.totalTemuan, 0);
 
 
   // Function to create province elements
@@ -381,6 +385,8 @@
       const provinceElement = createProvinceElement(province);
       provinceList.appendChild(provinceElement);
     });
+
+    document.getElementById("total-wrong").textContent = totalErrorNumber + ' TPS';
   }
 
   // Render the province list when the page loads
